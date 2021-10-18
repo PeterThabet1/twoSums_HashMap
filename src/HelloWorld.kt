@@ -1,27 +1,29 @@
-/*val nums : IntArray = intArrayOf(2,11,15,7)
-val target = 9
+/*val nums : IntArray = intArrayOf(3,3)
+val target = 6
 */
 
 fun main(args: Array<String>){
 
     fun twoSum (nums : IntArray, target : Int) : IntArray  {
-        var vis = hashMapOf<Int, Int>()
-        var res = intArrayOf()
-        for(i in nums){
-            var sec = target - i
-            if(vis.containsKey(sec)){
-                res = intArrayOf(nums.indexOf(i), nums.indexOf(sec))
-                break
+        var solution = intArrayOf()
+        for(i in nums.indices){
+            var j = i+1
+            while(j< nums.size){
+                if(nums[i]+nums[j]==target){
+                    solution = intArrayOf(i,j)
+                    break
+                }
+                j++
             }
-            else{
-                vis.put(i, nums.indexOf(i))
-            }
+
         }
-        if(res.size<1){
+
+        if(solution.size < 1){
             return intArrayOf(-1,-1)
         }
-        else return res
+        else return solution
     }
+
 
 
 
